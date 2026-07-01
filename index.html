@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<!-- v5: MULTI-MULLET - Mullet Mode toggle (Business in the Front / Party in the Back),
+     Sparky the mascot with rotating catchphrases, ambient eagle flyby, pickup truck on The Hill,
+     flame trim, sticker decals, burnout tire-mark dividers, America-O-Meter global shell counter,
+     copy pass.
+     v4: artwork & animation layer: bunting, flanking firecrackers, marquee, star field + hill
+     silhouette w/ lit window, whistler corkscrew shells, scroll reveals, hover pops.
+     v3: voting converted to best-round judging (crates load in daylight; guests crown the winning round).
+     v2: Boom on The Hill redesign - firecracker-label aesthetic, canvas fireworks,
+     fuse countdown, bring-o-meter, Years of Boom, The Hill address.
+     v1: initial RSVP site -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boom on The Hill 🎆 · Screws Family July 4th</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Alfa+Slab+One&family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:      #B5121B;
+      --red-deep: #8E0E15;
+      --blue:     #232C5C;
+      --night:    #101430;
+      --paper:    #F3E9D2;
+      --paper-dk: #E6D7B8;
+      --gold:     #D9A441;
+      --gold-lt:  #F2C76B;
+      --ink:      #1C1814;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* AGED PAPER TEXTURE */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Ccircle cx='1' cy='2' r='0.6' fill='%23000' opacity='0.05'/%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%23704214' opacity='0.05'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    /* STARS STRIP */
+    .stars-strip {
+      background: var(--blue);
+      padding: 8px 0;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 0.5em;
+      color: var(--gold-lt);
+      position: relative;
+      z-index: 1;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    /* HERO: THE LABEL */
+    header {
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+      padding: 4.6rem 1rem 2.6rem;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .bunting {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 36px;
+      z-index: 3;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='132' height='36' viewBox='0 0 132 36'%3E%3Cpath d='M0 3 L16.5 32 L33 3 Z' fill='%23B5121B' stroke='%231C1814' stroke-width='1.5'/%3E%3Cpath d='M33 3 L49.5 32 L66 3 Z' fill='%23D9A441' stroke='%231C1814' stroke-width='1.5'/%3E%3Cpath d='M66 3 L82.5 32 L99 3 Z' fill='%23232C5C' stroke='%231C1814' stroke-width='1.5'/%3E%3Cpath d='M99 3 L115.5 32 L132 3 Z' fill='%23D9A441' stroke='%231C1814' stroke-width='1.5'/%3E%3Crect width='132' height='4' fill='%23D9A441'/%3E%3C/svg%3E");
+      background-repeat: repeat-x;
+      background-size: 132px 36px;
+    }
+
+    /* sunburst rays */
+    header::before {
+      content: '';
+      position: absolute; inset: -30%;
+      background: repeating-conic-gradient(
+        from 0deg at 50% 42%,
+        rgba(181,18,27,0.10) 0deg 6deg,
+        transparent 6deg 12deg
+      );
+      animation: rays 120s linear infinite;
+    }
+    @keyframes rays { to { transform: rotate(360deg); } }
+
+    .hero-frame {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 0 auto;
+      border: 3px double var(--ink);
+      outline: 1px solid var(--ink);
+      outline-offset: 6px;
+      background: rgba(243,233,210,0.65);
+      padding: 2.2rem 1.4rem 2rem;
+    }
+
+    .hero-frame .corner {
+      position: absolute;
+      font-size: 1rem;
+      color: var(--red);
+    }
+    .corner.tl { top: 6px; left: 10px; }
+    .corner.tr { top: 6px; right: 10px; }
+    .corner.bl { bottom: 6px; left: 10px; }
+    .corner.br { bottom: 6px; right: 10px; }
+
+    .badge {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--paper);
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      margin-bottom: 1.2rem;
+      border: 1px solid var(--gold);
+    }
+
+    header h1 {
+      font-family: 'Rye', Georgia, serif;
+      font-size: clamp(2.6rem, 9vw, 5.4rem);
+      font-weight: 400;
+      color: var(--red);
+      line-height: 0.98;
+      text-shadow: 3px 3px 0 var(--gold-lt), 5px 5px 0 rgba(28,24,20,0.25);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      font-family: 'Special Elite', cursive;
+      color: var(--ink);
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      letter-spacing: 0.1em;
+    }
+
+    .divider-stars {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: center;
+      margin: 1.1rem 0;
+      color: var(--red);
+      font-size: 1rem;
+    }
+    .divider-stars::before,
+    .divider-stars::after {
+      content: '';
+      flex: 1;
+      max-width: 110px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--red));
+    }
+    .divider-stars::after {
+      background: linear-gradient(to left, transparent, var(--red));
+    }
+
+    .label-warning {
+      display: inline-block;
+      margin-top: 1.1rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--red);
+      padding: 5px 14px;
+      transform: rotate(-1.2deg);
+      border: 1px dashed var(--paper);
+      outline: 3px solid var(--red);
+    }
+
+    /* THE SKY: FUSE + FIREWORKS */
+    .sky-band {
+      background: var(--night);
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      border-top: 4px solid var(--gold);
+      border-bottom: 4px solid var(--gold);
+      min-height: 380px;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+
+    #sky-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .sky-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2.4rem 1rem 2rem;
+      pointer-events: none;
+    }
+
+    .countdown-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 1.3rem;
+      text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    }
+
+    /* the fuse */
+    .fuse-wrap {
+      max-width: 560px;
+      margin: 0 auto 1.6rem;
+      position: relative;
+      height: 22px;
+    }
+    .fuse-track {
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 5px;
+      transform: translateY(-50%);
+      background: repeating-linear-gradient(90deg, #caa367 0 7px, #9c7a44 7px 14px);
+      border-radius: 3px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.6);
+    }
+    .fuse-burned {
+      position: absolute;
+      top: 50%; left: 0;
+      height: 5px;
+      transform: translateY(-50%);
+      width: 0%;
+      background: repeating-linear-gradient(90deg, #3a3a3a 0 5px, #555 5px 10px);
+      border-radius: 3px;
+      opacity: 0.9;
+    }
+    .fuse-spark {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      transform: translate(-50%, -50%);
+      font-size: 1.3rem;
+      color: var(--gold-lt);
+      text-shadow: 0 0 6px #fff, 0 0 14px var(--gold-lt), 0 0 26px var(--red);
+      animation: sparkle 0.18s steps(2) infinite;
+    }
+    @keyframes sparkle {
+      from { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+      to   { transform: translate(-50%, -54%) scale(1.25) rotate(18deg); }
+    }
+    .fuse-bomb {
+      position: absolute;
+      right: -34px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.6rem;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 70px;
+    }
+
+    .countdown-num {
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 0 14px rgba(217,164,65,0.55), 2px 2px 0 rgba(0,0,0,0.5);
+    }
+
+    .countdown-unit span {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-top: 5px;
+    }
+
+    .sky-hint {
+      margin-top: 1.4rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* WARNING STRIP (marquee) */
+    .warning-strip {
+      background: var(--gold);
+      color: var(--ink);
+      font-family: 'Special Elite', cursive;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 9px 0;
+      position: relative;
+      z-index: 1;
+      border-top: 2px dashed var(--ink);
+      border-bottom: 2px dashed var(--ink);
+      line-height: 1.8;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .warning-track {
+      display: inline-block;
+      animation: marquee 30s linear infinite;
+    }
+    .warning-track span {
+      display: inline-block;
+      padding-right: 4rem;
+    }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* SECTIONS */
+    .section {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-heading {
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--blue);
+      text-align: center;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+    }
+
+    .section-sub {
+      font-family: 'Special Elite', cursive;
+      text-align: center;
+      color: var(--red);
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    /* EVENT DETAILS */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .detail-card {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      padding: 1.5rem 1.2rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 4px 4px 0 var(--paper-dk);
+    }
+
+    .detail-card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 12px; right: 12px;
+      height: 4px;
+      background: var(--red);
+    }
+
+    .detail-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+    .detail-card h3 {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.4rem;
+    }
+
+    .detail-card p {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1.4;
+    }
+
+    .directions-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--blue);
+      padding: 5px 12px;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+    }
+    .directions-link:hover { background: var(--red); }
+
+    /* BRING / FAQ */
+    .bring-section { background: var(--blue); color: var(--paper); }
+
+    .bring-section .section-heading { color: var(--gold-lt); }
+    .bring-section .section-sub { color: var(--paper); }
+
+    .bring-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .bring-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(217,164,65,0.4);
+      border-radius: 3px;
+      padding: 1.2rem 1rem;
+    }
+
+    .bring-card h3 {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      color: var(--gold-lt);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .bring-card ul {
+      list-style: none;
+      font-size: 0.88rem;
+      line-height: 1.9;
+      color: rgba(243,233,210,0.88);
+    }
+
+    .bring-card ul li::before {
+      content: '★ ';
+      color: var(--gold);
+      font-size: 0.6rem;
+    }
+
+    .faq { margin-top: 2.5rem; }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(217,164,65,0.25);
+      padding: 1rem 0;
+    }
+
+    .faq-item h4 {
+      font-family: 'Special Elite', cursive;
+      color: var(--gold-lt);
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: rgba(243,233,210,0.82);
+      line-height: 1.65;
+    }
+
+    /* BUILD THE SHOW (VOTING) */
+    .vote-section { background: var(--paper); }
+
+    .vote-intro {
+      max-width: 620px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .ballot-card {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      box-shadow: 5px 5px 0 var(--paper-dk);
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 1.8rem 1.5rem;
+      position: relative;
+    }
+
+    .ballot-card::before {
+      content: 'OFFICIAL BALLOT';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      background: var(--red);
+      color: var(--paper);
+      font-family: 'Special Elite', cursive;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      padding: 4px 14px;
+    }
+
+    .vote-round {
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px dashed var(--paper-dk);
+    }
+    .vote-round:last-of-type { border-bottom: none; }
+
+    .vote-round-title {
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-size: 1rem;
+      color: var(--red);
+      margin-bottom: 0.6rem;
+    }
+
+    .vote-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .round-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .round-chip { cursor: pointer; position: relative; }
+    .round-chip input { position: absolute; opacity: 0; pointer-events: none; }
+    .round-chip span {
+      display: block;
+      text-align: center;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 0.5rem;
+      border: 2px solid var(--blue);
+      border-radius: 3px;
+      color: var(--blue);
+      background: var(--paper);
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .round-chip span b {
+      display: block;
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-weight: 400;
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+    .round-chip input:checked + span {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+      box-shadow: 2px 2px 0 var(--paper-dk);
+    }
+    .round-chip input:focus-visible + span { outline: 3px solid var(--gold); }
+    @media (max-width: 420px) { .round-options { grid-template-columns: 1fr; } }
+
+    /* tally bars */
+    .tally-wrap {
+      max-width: 640px;
+      margin: 2.4rem auto 0;
+    }
+    .tally-round {
+      margin-bottom: 1.5rem;
+    }
+    .tally-round h4 {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+    .tally-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 4px;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+    }
+    .tally-bar-label { width: 200px; flex-shrink: 0; text-align: right; color: var(--ink); }
+    .tally-bar-track { flex: 1; background: var(--paper-dk); border-radius: 3px; height: 16px; position: relative; }
+    .tally-bar-fill {
+      height: 100%;
+      background: var(--blue);
+      border-radius: 3px;
+      min-width: 2px;
+      transition: width 0.6s ease;
+    }
+    .tally-bar-fill.leader { background: var(--red); }
+    .tally-bar-count { width: 24px; flex-shrink: 0; color: var(--red); font-weight: bold; }
+    .tally-empty {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.78rem;
+      color: var(--ink);
+      opacity: 0.6;
+      font-style: italic;
+    }
+
+    /* YEARS OF BOOM */
+    .history-section { background: var(--paper-dk); }
+
+    .timeline {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 6px; bottom: 6px;
+      width: 3px;
+      background: repeating-linear-gradient(180deg, var(--red) 0 10px, transparent 10px 16px);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.6rem;
+    }
+    .timeline-item::before {
+      content: '★';
+      position: absolute;
+      left: -2rem;
+      top: 0;
+      color: var(--red);
+      font-size: 1.1rem;
+      background: var(--paper-dk);
+      line-height: 1.3;
+    }
+    .timeline-year {
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--blue);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-text {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* RSVP FORM */
+    .rsvp-section { background: var(--paper); }
+
+    .stats-bar {
+      display: none;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      max-width: 480px;
+      margin: 0 auto 2rem;
+    }
+
+    .stat {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      padding: 0.9rem 1rem;
+      text-align: center;
+      flex: 1;
+      min-width: 130px;
+      box-shadow: 3px 3px 0 var(--paper-dk);
+      position: relative;
+    }
+
+    .stat::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 12px; right: 12px;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .stat-num {
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--red);
+      line-height: 1.1;
+    }
+
+    .stat span {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .form-card {
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      padding: 2rem 2rem;
+      box-shadow: 5px 5px 0 var(--paper-dk);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    label {
+      display: block;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.4rem;
+    }
+
+    .field-hint {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.72rem;
+      font-style: italic;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--ink);
+      opacity: 0.65;
+      display: block;
+      margin-top: 3px;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 2px solid var(--paper-dk);
+      border-radius: 3px;
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--paper);
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+    }
+
+    textarea { resize: vertical; min-height: 80px; }
+
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      letter-spacing: 0;
+      text-transform: none;
+      font-family: 'Libre Baskerville', serif;
+      color: var(--ink);
+    }
+
+    .radio-option input[type=radio] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--red);
+      flex-shrink: 0;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.95rem;
+      background: var(--red);
+      color: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+      box-shadow: 3px 3px 0 var(--paper-dk);
+    }
+
+    .submit-btn:hover { background: var(--red-deep); }
+    .submit-btn:active { transform: translateY(1px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .form-message {
+      text-align: center;
+      margin-top: 1rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.9rem;
+      min-height: 1.4em;
+    }
+    .form-message.success { color: #2a7a3b; }
+    .form-message.error   { color: var(--red); }
+
+    /* BRING-O-METER + GUEST LIST */
+    .guest-list-wrap {
+      margin-top: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .guest-list-title {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .guest-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .chip {
+      background: var(--blue);
+      color: #fff;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .chip.tentative {
+      background: transparent;
+      border: 1.5px solid var(--blue);
+      color: var(--blue);
+    }
+
+    .chip.bring {
+      background: var(--paper);
+      border: 1.5px dashed var(--red);
+      color: var(--ink);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--night);
+      color: rgba(243,233,210,0.65);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer .footer-stars {
+      font-size: 1.2rem;
+      letter-spacing: 0.4em;
+      display: block;
+      margin-bottom: 0.6rem;
+      color: var(--gold);
+    }
+
+    /* FLAG STRIPE */
+    .hr-flag {
+      height: 6px;
+      background: linear-gradient(to right,
+        var(--red) 0% 33.3%,
+        var(--paper) 33.3% 66.6%,
+        var(--blue) 66.6% 100%
+      );
+      border: none;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── ARTWORK & ANIMATION LAYER ─── */
+
+    /* flanking firecrackers */
+    .firecracker {
+      position: absolute;
+      top: 54%;
+      width: 56px;
+      opacity: 0.94;
+      z-index: 1;
+    }
+    .fc-left  { left: 22px;  transform: translateY(-50%) rotate(-10deg); }
+    .fc-right { right: 22px; transform: translateY(-50%) rotate(10deg) scaleX(-1); }
+    .fc-spark { animation: fcPulse 0.5s ease-in-out infinite alternate; transform-origin: 44px 4px; }
+    @keyframes fcPulse { from { opacity: 0.45; } to { opacity: 1; } }
+    @media (max-width: 680px) { .firecracker { display: none; } }
+
+    /* hero entrance */
+    .hero-frame { animation: heroPop 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.15) both; }
+    @keyframes heroPop {
+      from { opacity: 0; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* night-sky star field */
+    .sky-stars { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+    .sky-stars .star {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: starTwinkle 2.6s ease-in-out infinite alternate;
+    }
+    @keyframes starTwinkle { from { opacity: 0.15; } to { opacity: 0.85; } }
+
+    /* the hill silhouette */
+    .hill-art {
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      z-index: 1;
+      pointer-events: none;
+      line-height: 0;
+    }
+    .hill-art svg { width: 100%; height: auto; display: block; }
+    .hill-window { animation: windowFlicker 5s ease-in-out infinite; }
+    @keyframes windowFlicker {
+      0%, 92%, 100% { opacity: 1; }
+      95% { opacity: 0.55; }
+    }
+
+    .sky-band { min-height: 440px; }
+    .sky-content { padding-bottom: 7rem; }
+    #sky-canvas { z-index: 0; }
+
+    /* scroll reveals */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* hover pops */
+    .detail-card { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .detail-card:hover { transform: translate(-2px, -3px) rotate(-0.4deg); box-shadow: 7px 8px 0 var(--paper-dk); }
+    .bring-card { transition: transform 0.18s ease, background 0.18s ease; }
+    .bring-card:hover { transform: translateY(-3px); background: rgba(255,255,255,0.11); }
+    .round-chip span:hover { transform: translateY(-2px); }
+
+    /* RESPONSIVE / MOTION */
+    @media (max-width: 600px) {
+      .countdown { gap: 0.8rem; }
+      .form-card, .ballot-card { padding: 1.4rem 1rem; }
+      .stat { min-width: 100px; padding: 0.7rem 0.6rem; }
+      .stat-num { font-size: 1.4rem; }
+      .tally-bar-label { width: 148px; font-size: 0.66rem; }
+      .sky-band { min-height: 400px; }
+      .sky-content { padding-bottom: 5rem; }
+      .fuse-wrap { max-width: 78vw; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      header::before { animation: none; }
+      .fuse-spark { animation: none; }
+      .fc-spark { animation: none; }
+      .hero-frame { animation: none; }
+      .sky-stars .star { animation: none; }
+      .hill-window { animation: none; }
+      .warning-track { animation: none; }
+      .warning-track .dup { display: none; }
+      .warning-strip { white-space: normal; text-align: center; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ============================================
+       MULLET MODE & ADD-ONS (v5)
+       ============================================ */
+
+    /* Mullet toggle */
+    .mullet-toggle {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 100;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      padding: 6px 10px 6px 6px;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 2px 3px 0 rgba(0,0,0,0.2);
+      transition: all 0.2s;
+    }
+    .mullet-toggle:hover { transform: translateY(-2px); }
+    .mullet-toggle .knob {
+      width: 22px; height: 22px;
+      background: var(--red);
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 0.85rem;
+      transition: background 0.2s, transform 0.3s;
+    }
+    body.mullet .mullet-toggle .knob { background: var(--gold); transform: rotate(360deg); }
+    .mullet-toggle .lbl { white-space: nowrap; }
+    @media (max-width: 480px) {
+      .mullet-toggle { padding: 5px 8px 5px 5px; font-size: 0.62rem; }
+    }
+
+    /* ── MULLET MODE ── */
+    body.mullet {
+      background: #1a0f0a;
+    }
+    body.mullet::before {
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='5'%3E%3Ccircle cx='1' cy='2' r='0.6' fill='%23F2C76B' opacity='0.06'/%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%23B5121B' opacity='0.07'/%3E%3C/svg%3E");
+    }
+    body.mullet header { background: #2a1410; }
+    body.mullet .hero-frame {
+      background: rgba(20,8,4,0.7);
+      border-color: var(--gold);
+      outline-color: var(--gold);
+      transform: rotate(-0.8deg);
+    }
+    body.mullet header h1 {
+      color: var(--gold-lt);
+      text-shadow:
+        3px 3px 0 var(--red),
+        5px 5px 0 var(--ink),
+        0 0 30px rgba(242,199,107,0.5);
+      animation: chromeShift 4s ease-in-out infinite alternate;
+    }
+    @keyframes chromeShift {
+      from { filter: hue-rotate(0deg); }
+      to   { filter: hue-rotate(20deg); }
+    }
+    body.mullet .subtitle { color: var(--gold-lt); }
+    body.mullet .section-heading {
+      color: var(--gold-lt);
+      text-shadow: 2px 2px 0 var(--red);
+      transform: rotate(-1deg);
+      display: inline-block;
+      width: 100%;
+    }
+    body.mullet .section { background: transparent !important; }
+    body.mullet .section-sub { color: var(--gold-lt); }
+    body.mullet .detail-card, body.mullet .form-card, body.mullet .ballot-card {
+      background: #2a1410;
+      color: var(--paper);
+      border-color: var(--gold);
+      transform: rotate(0.4deg);
+    }
+    body.mullet .detail-card:nth-child(even) { transform: rotate(-0.5deg); }
+    body.mullet .detail-card p { color: var(--gold-lt); }
+    body.mullet .detail-card h3, body.mullet label { color: var(--gold-lt); }
+    body.mullet input, body.mullet select, body.mullet textarea {
+      background: #1a0a06;
+      color: var(--paper);
+      border-color: var(--gold);
+    }
+    body.mullet .bring-section { background: #2a1410 !important; }
+    body.mullet .vote-section, body.mullet .rsvp-section { background: transparent; }
+    body.mullet .history-section { background: #1a0a06 !important; }
+    body.mullet .timeline-year { color: var(--gold-lt); }
+    body.mullet .footer-stars { color: var(--red); }
+    body.mullet footer { background: #0a0502; }
+    body.mullet .stat, body.mullet .chip { transform: rotate(-1deg); }
+    body.mullet .chip:nth-child(even) { transform: rotate(1.2deg); }
+    body.mullet .round-chip span { background: #1a0a06; color: var(--gold-lt); border-color: var(--gold); }
+    body.mullet .submit-btn {
+      background: linear-gradient(180deg, var(--red) 0%, #d4374c 50%, var(--red-deep) 100%);
+      animation: chromeButton 2s ease-in-out infinite alternate;
+    }
+    @keyframes chromeButton {
+      from { box-shadow: 3px 3px 0 var(--gold), 0 0 0 rgba(242,199,107,0); }
+      to   { box-shadow: 3px 3px 0 var(--gold), 0 0 24px rgba(242,199,107,0.6); }
+    }
+
+    /* Flame trim on the submit button */
+    body.mullet .submit-btn::before {
+      content: '🔥🔥🔥';
+      position: absolute;
+      top: -14px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      letter-spacing: 0.3em;
+      filter: drop-shadow(0 -2px 4px rgba(255,140,0,0.7));
+    }
+    body.mullet .submit-btn { position: relative; }
+
+    /* Sparky the Mascot */
+    .sparky {
+      position: fixed;
+      bottom: 14px;
+      left: 14px;
+      z-index: 95;
+      width: 78px;
+      height: 78px;
+      cursor: pointer;
+      animation: sparkyBob 3s ease-in-out infinite alternate;
+      filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.25));
+      transition: transform 0.2s;
+    }
+    .sparky:hover { transform: scale(1.08) rotate(-4deg); }
+    @keyframes sparkyBob {
+      from { transform: translateY(0) rotate(-2deg); }
+      to   { transform: translateY(-6px) rotate(2deg); }
+    }
+    .sparky-bubble {
+      position: fixed;
+      bottom: 96px;
+      left: 14px;
+      z-index: 96;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.78rem;
+      color: var(--ink);
+      max-width: 200px;
+      box-shadow: 2px 3px 0 rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+    }
+    .sparky-bubble.show { opacity: 1; transform: translateY(0); }
+    .sparky-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border: 6px solid transparent;
+      border-top-color: var(--ink);
+    }
+    @media (max-width: 480px) {
+      .sparky { width: 60px; height: 60px; bottom: 10px; left: 10px; }
+      .sparky-bubble { bottom: 76px; left: 10px; font-size: 0.7rem; max-width: 170px; }
+    }
+
+    /* Eagle flyby */
+    .eagle {
+      position: fixed;
+      top: 25%;
+      left: -120px;
+      width: 100px;
+      height: auto;
+      z-index: 90;
+      pointer-events: none;
+      opacity: 0;
+      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+    }
+    .eagle.flying {
+      animation: eagleFly 12s linear forwards;
+    }
+    @keyframes eagleFly {
+      0%   { left: -120px; top: 25%;  opacity: 0; transform: scaleX(1); }
+      8%   { opacity: 1; }
+      40%  { top: 12%; }
+      70%  { top: 30%; }
+      92%  { opacity: 1; }
+      100% { left: calc(100vw + 20px); top: 18%; opacity: 0; transform: scaleX(1); }
+    }
+    .eagle-wing-l, .eagle-wing-r {
+      transform-box: fill-box;
+      transform-origin: 50% 50%;
+      animation: eagleFlap 0.7s ease-in-out infinite alternate;
+    }
+    .eagle-wing-r { animation-delay: -0.35s; }
+    @keyframes eagleFlap {
+      from { transform: rotate(-8deg); }
+      to   { transform: rotate(14deg); }
+    }
+
+    /* Sticker decals */
+    .sticker {
+      position: absolute;
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      padding: 7px 12px;
+      background: var(--paper);
+      color: var(--red);
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.25);
+      z-index: 4;
+      pointer-events: none;
+      text-transform: uppercase;
+    }
+    .sticker.s1 { top: 70%; left: 3%;  transform: rotate(-8deg); background: var(--gold); color: var(--ink); }
+    .sticker.s2 { top: 8%;  right: 3%;  transform: rotate(12deg); background: var(--red); color: var(--paper); }
+    .sticker.s3 { top: 50%; right: 1%;  transform: rotate(-5deg); }
+    .sticker.s4 { top: 8%;  left: 4%;   transform: rotate(7deg); background: var(--blue); color: var(--paper); }
+    @media (max-width: 720px) {
+      .sticker.s1, .sticker.s3 { display: none; }
+      .sticker.s2, .sticker.s4 { font-size: 0.6rem; padding: 5px 8px; }
+    }
+
+    /* Burnout tire-mark divider */
+    .hr-burnout {
+      height: 26px;
+      background:
+        radial-gradient(ellipse 60px 8px at 10% 50%, rgba(20,15,10,0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 80px 8px at 30% 50%, rgba(20,15,10,0.5) 0%, transparent 70%),
+        radial-gradient(ellipse 100px 9px at 55% 50%, rgba(20,15,10,0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 70px 8px at 78% 50%, rgba(20,15,10,0.4) 0%, transparent 70%),
+        radial-gradient(ellipse 90px 8px at 95% 50%, rgba(20,15,10,0.55) 0%, transparent 70%),
+        var(--paper-dk);
+      border: none;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .hr-burnout::before, .hr-burnout::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      height: 4px;
+      background: repeating-linear-gradient(90deg, rgba(20,15,10,0.65) 0 8px, transparent 8px 14px);
+      left: 0; right: 0;
+    }
+    .hr-burnout::after { top: 14px; opacity: 0.5; }
+
+    /* America-O-Meter */
+    .america-meter {
+      max-width: 580px;
+      margin: 0 auto 2rem;
+      background: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+      padding: 1.1rem 1.4rem;
+      text-align: center;
+      box-shadow: 4px 4px 0 var(--paper-dk);
+      position: relative;
+    }
+    .america-meter::before {
+      content: '🇺🇸';
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.6rem;
+      background: var(--paper);
+      padding: 0 8px;
+    }
+    .america-meter .label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.4rem;
+    }
+    .america-meter .count {
+      font-family: 'Alfa Slab One', Georgia, serif;
+      font-size: 2.2rem;
+      color: var(--red);
+      line-height: 1;
+    }
+    .america-meter .sub {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.72rem;
+      color: var(--ink);
+      opacity: 0.7;
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+    body.mullet .america-meter { background: #2a1410; color: var(--paper); border-color: var(--gold); }
+    body.mullet .america-meter .label, body.mullet .america-meter .sub { color: var(--gold-lt); }
+    body.mullet .america-meter::before { background: #1a0f0a; }
+
+    /* Truck on the hill (added inside .hill-art SVG via JS-free markup) */
+    .truck-wheel {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: wheelRoll 3s linear infinite;
+    }
+    @keyframes wheelRoll { to { transform: rotate(360deg); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sparky, .eagle, .eagle-wing-l, .eagle-wing-r, .truck-wheel,
+      body.mullet header h1, body.mullet .submit-btn { animation: none !important; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Mullet Mode toggle -->
+<button class="mullet-toggle" id="mullet-toggle" aria-label="Toggle Mullet Mode">
+  <span class="knob" id="mullet-knob">💼</span>
+  <span class="lbl" id="mullet-label">Business in the Front</span>
+</button>
+
+<!-- Sparky the Mascot -->
+<div class="sparky-bubble" id="sparky-bubble"></div>
+<svg class="sparky" id="sparky" viewBox="0 0 100 100" aria-label="Sparky the Mascot">
+  <!-- gold star body -->
+  <polygon points="50,8 60,38 92,38 66,57 76,88 50,69 24,88 34,57 8,38 40,38" fill="#D9A441" stroke="#1C1814" stroke-width="2.5"/>
+  <!-- mullet flowing behind -->
+  <path d="M65 35 Q85 38 92 50 Q95 62 88 72 Q80 78 70 72 Q72 60 68 50 Z" fill="#3a2614" stroke="#1C1814" stroke-width="2"/>
+  <path d="M62 40 Q80 44 86 55 Q88 64 82 70" fill="none" stroke="#1C1814" stroke-width="1.5" opacity="0.5"/>
+  <!-- aviator shades -->
+  <ellipse cx="40" cy="48" rx="9" ry="7" fill="#1C1814" stroke="#1C1814" stroke-width="1.5"/>
+  <ellipse cx="58" cy="48" rx="9" ry="7" fill="#1C1814" stroke="#1C1814" stroke-width="1.5"/>
+  <line x1="49" y1="48" x2="49" y2="48" stroke="#1C1814" stroke-width="2"/>
+  <path d="M31 47 L23 45 M67 47 L75 45" stroke="#1C1814" stroke-width="1.5"/>
+  <!-- shades highlight -->
+  <ellipse cx="38" cy="46" rx="2.5" ry="1.5" fill="#F2C76B" opacity="0.7"/>
+  <ellipse cx="56" cy="46" rx="2.5" ry="1.5" fill="#F2C76B" opacity="0.7"/>
+  <!-- smirk -->
+  <path d="M42 62 Q49 65 56 62" fill="none" stroke="#1C1814" stroke-width="2" stroke-linecap="round"/>
+</svg>
+
+<!-- Eagle (flies periodically) -->
+<svg class="eagle" id="eagle" viewBox="0 0 100 60" aria-hidden="true">
+  <!-- body -->
+  <ellipse cx="50" cy="32" rx="14" ry="6" fill="#3a2614" stroke="#1C1814" stroke-width="1.5"/>
+  <!-- head -->
+  <circle cx="65" cy="28" r="6" fill="#F3E9D2" stroke="#1C1814" stroke-width="1.5"/>
+  <!-- beak -->
+  <polygon points="71,28 78,29 71,31" fill="#D9A441" stroke="#1C1814" stroke-width="1"/>
+  <!-- eye -->
+  <circle cx="66" cy="27" r="1" fill="#1C1814"/>
+  <!-- tail -->
+  <polygon points="36,32 28,28 28,36" fill="#F3E9D2" stroke="#1C1814" stroke-width="1.5"/>
+  <!-- left wing -->
+  <path class="eagle-wing-l" d="M44 30 Q35 10 18 12 Q30 20 42 30 Z" fill="#3a2614" stroke="#1C1814" stroke-width="1.5"/>
+  <!-- right wing -->
+  <path class="eagle-wing-r" d="M52 30 Q60 8 80 12 Q66 22 54 32 Z" fill="#3a2614" stroke="#1C1814" stroke-width="1.5"/>
+</svg>
+
+<!-- Stars strip -->
+<div class="stars-strip">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
+
+<!-- Hero: the firecracker label -->
+<header>
+  <div class="bunting" aria-hidden="true"></div>
+  <div class="sticker s1">⚡ Powered by Shrimp ⚡</div>
+  <div class="sticker s2">No Festival Balls</div>
+  <div class="sticker s3">★ The Hill ★</div>
+  <div class="sticker s4">Shirts Optional After 9</div>
+
+  <svg class="firecracker fc-left" viewBox="0 0 56 120" aria-hidden="true">
+    <path d="M28 22 Q40 14 44 6" fill="none" stroke="#9c7a44" stroke-width="3" stroke-linecap="round"/>
+    <g class="fc-spark">
+      <path d="M44 4 L46.5 0 M44 4 L48 5 M44 4 L45 9 M44 4 L40 2.5 M44 4 L41 8" stroke="#F2C76B" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <rect x="12" y="22" width="32" height="86" rx="7" fill="#B5121B" stroke="#1C1814" stroke-width="2.5"/>
+    <rect x="12" y="38" width="32" height="9" fill="#F3E9D2"/>
+    <rect x="12" y="76" width="32" height="9" fill="#F3E9D2"/>
+    <circle cx="28" cy="61" r="7" fill="#232C5C" stroke="#F3E9D2" stroke-width="1.5"/>
+  </svg>
+  <svg class="firecracker fc-right" viewBox="0 0 56 120" aria-hidden="true">
+    <path d="M28 22 Q40 14 44 6" fill="none" stroke="#9c7a44" stroke-width="3" stroke-linecap="round"/>
+    <g class="fc-spark">
+      <path d="M44 4 L46.5 0 M44 4 L48 5 M44 4 L45 9 M44 4 L40 2.5 M44 4 L41 8" stroke="#F2C76B" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <rect x="12" y="22" width="32" height="86" rx="7" fill="#B5121B" stroke="#1C1814" stroke-width="2.5"/>
+    <rect x="12" y="38" width="32" height="9" fill="#F3E9D2"/>
+    <rect x="12" y="76" width="32" height="9" fill="#F3E9D2"/>
+    <circle cx="28" cy="61" r="7" fill="#232C5C" stroke="#F3E9D2" stroke-width="1.5"/>
+  </svg>
+
+  <div class="hero-frame">
+    <span class="corner tl">★</span><span class="corner tr">★</span>
+    <span class="corner bl">★</span><span class="corner br">★</span>
+    <div class="badge">A Screws Family Production · Est. Before Anyone Wrote It Down</div>
+    <h1>BOOM ON<br/>THE HILL</h1>
+    <div class="divider-stars">★ ★ ★</div>
+    <p class="subtitle">The Fourth of July Spectacular · Saturday, July 5th, 2026</p>
+    <p class="subtitle" style="margin-top:0.4rem; font-size:0.85rem; opacity:0.75;">24631 Hwy 53 · Saucier, Mississippi</p>
+    <div class="label-warning">⚠ Shoots Flaming Balls · With Report ⚠</div>
+  </div>
+</header>
+
+<!-- The sky: fireworks + fuse countdown -->
+<div class="sky-band" id="sky-band">
+  <canvas id="sky-canvas"></canvas>
+  <div class="sky-stars" id="sky-stars" aria-hidden="true"></div>
+  <div class="hill-art" aria-hidden="true">
+    <svg viewBox="0 0 800 120" preserveAspectRatio="none">
+      <path d="M0 120 L0 84 Q160 40 400 62 Q640 84 800 66 L800 120 Z" fill="#0B0E22"/>
+      <polygon points="96,72 110,40 124,72" fill="#070A18"/>
+      <polygon points="126,78 138,50 150,78" fill="#070A18"/>
+      <polygon points="652,84 666,54 680,84" fill="#070A18"/>
+      <polygon points="684,88 696,62 708,88" fill="#070A18"/>
+      <g>
+        <rect x="372" y="42" width="48" height="24" fill="#070A18"/>
+        <polygon points="366,42 396,24 426,42" fill="#070A18"/>
+        <rect class="hill-window" x="392" y="50" width="10" height="10" fill="#F2C76B"/>
+      </g>
+      <rect x="470" y="58" width="28" height="13" fill="#070A18"/>
+      <rect x="474" y="49" width="3.5" height="9" fill="#070A18"/>
+      <rect x="482" y="49" width="3.5" height="9" fill="#070A18"/>
+      <rect x="490" y="49" width="3.5" height="9" fill="#070A18"/>
+      <rect x="506" y="61" width="28" height="13" fill="#070A18"/>
+      <rect x="510" y="52" width="3.5" height="9" fill="#070A18"/>
+      <rect x="518" y="52" width="3.5" height="9" fill="#070A18"/>
+      <rect x="526" y="52" width="3.5" height="9" fill="#070A18"/>
+      <!-- pickup truck parked near the crates -->
+      <g>
+        <rect x="200" y="64" width="38" height="9" fill="#0B0E22"/>
+        <rect x="206" y="56" width="16" height="9" fill="#0B0E22"/>
+        <polygon points="220,56 230,56 234,65 220,65" fill="#0B0E22"/>
+        <rect x="208" y="58" width="11" height="5" fill="#1a1f3a"/>
+        <circle class="truck-wheel" cx="209" cy="74" r="3.5" fill="#050810" stroke="#1a1f3a" stroke-width="0.8"/>
+        <circle class="truck-wheel" cx="231" cy="74" r="3.5" fill="#050810" stroke="#1a1f3a" stroke-width="0.8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="sky-content">
+    <div class="countdown-label">★ The Fuse Is Lit ★</div>
+
+    <div class="fuse-wrap">
+      <div class="fuse-track"></div>
+      <div class="fuse-burned" id="fuse-burned"></div>
+      <div class="fuse-spark" id="fuse-spark">✦</div>
+      <div class="fuse-bomb">🧨</div>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-days">--</div>
+        <span>Days</span>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-hours">--</div>
+        <span>Hours</span>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-mins">--</div>
+        <span>Minutes</span>
+      </div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-secs">--</div>
+        <span>Seconds</span>
+      </div>
+    </div>
+
+    <div class="sky-hint">— tap the sky to launch one early —</div>
+  </div>
+</div>
+
+<!-- Warning strip -->
+<div class="warning-strip">
+  <div class="warning-track">
+    <span>⚠ Warning: Outrageous Noise · Gratuitous Patriotism · Excessive Volumes of Shrimp · May Drive Your Stuffy Neighbor Up the Walls · Shoots Flaming Balls With Report ⚠</span>
+    <span class="dup" aria-hidden="true">⚠ Warning: Outrageous Noise · Gratuitous Patriotism · Excessive Volumes of Shrimp · May Drive Your Stuffy Neighbor Up the Walls · Shoots Flaming Balls With Report ⚠</span>
+  </div>
+</div>
+
+<!-- Event Details -->
+<section class="section">
+  <div class="section-heading">The Details</div>
+  <div class="section-sub">★ What You Need to Know ★</div>
+
+  <div class="details-grid">
+    <div class="detail-card">
+      <div class="detail-icon">📅</div>
+      <h3>Date</h3>
+      <p>Saturday<br/>July 5th, 2026</p>
+    </div>
+    <div class="detail-card">
+      <div class="detail-icon">🕕</div>
+      <h3>Time</h3>
+      <p>6:00 PM<br/>till the smoke clears</p>
+    </div>
+    <div class="detail-card">
+      <div class="detail-icon">📍</div>
+      <h3>Location</h3>
+      <p>The Hill<br/>24631 Hwy 53<br/>Saucier, MS</p>
+      <a class="directions-link" href="https://www.google.com/maps/search/?api=1&query=24631+Highway+53+Saucier+MS" target="_blank" rel="noopener">Get Directions →</a>
+    </div>
+    <div class="detail-card">
+      <div class="detail-icon">🎆</div>
+      <h3>Show Time</h3>
+      <p>Four rounds at dusk<br/>~8:30 till the finale</p>
+    </div>
+  </div>
+</section>
+
+<!-- Flag stripe -->
+<hr class="hr-flag" />
+
+<!-- What to Bring + FAQ -->
+<section class="section bring-section">
+  <div class="section-heading">What to Bring</div>
+  <div class="section-sub">★ The Hill Provides the Boom — You Bring the Rest ★</div>
+
+  <div class="bring-grid">
+    <div class="bring-card">
+      <h3>🍖 Food &amp; Drink</h3>
+      <ul>
+        <li>A dish that'd make your mama proud</li>
+        <li>Drinks for you + a buddy</li>
+        <li>Dessert heroes always welcome</li>
+        <li>Cooler &amp; ice — we always run short</li>
+      </ul>
+    </div>
+    <div class="bring-card">
+      <h3>🪑 Comfort</h3>
+      <ul>
+        <li>Lawn chairs / blankets</li>
+        <li>Bug spray (Mississippi-strength)</li>
+        <li>Flashlights for after dark</li>
+        <li>More water than you think</li>
+      </ul>
+    </div>
+    <div class="bring-card">
+      <h3>🧒 For the Young'uns</h3>
+      <ul>
+        <li>Snakes &amp; sparklers provided</li>
+        <li>Glow sticks strongly encouraged</li>
+        <li>Ear muffs for tiny ears</li>
+        <li>Adult supervision, loosely defined</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h4>★ Why July 5th instead of the 4th?</h4>
+      <p>The 4th belongs to the municipal shows — Gulfport Harbor, the Shuckers game, Ocean Springs waterfront. Go enjoy 'em. Then come to The Hill on the 5th, where there's no crowd, no parking lot, and the finale answers to nobody.</p>
+    </div>
+    <div class="faq-item">
+      <h4>★ Is this a fancy event?</h4>
+      <p>Life's a garden — dig it. Come as you are: camo, cutoffs, or Sunday best. Mullets receive priority parking.</p>
+    </div>
+    <div class="faq-item">
+      <h4>★ Kids and dogs?</h4>
+      <p>Both welcome. Snakes and sparklers for the young'uns — it's the only way they learn. Dogs who take personal offense at loud noises may prefer to sit this one out.</p>
+    </div>
+    <div class="faq-item">
+      <h4>★ What kind of fireworks?</h4>
+      <p>Aerial shells out of HDPE mortar tubes — chrysanthemums, crackle, whistlers, mines &amp; tails, and reports you'll feel in your chest. Four rounds, loaded and sequenced in daylight like professionals (ish). Your only job: vote for the best one (see below).</p>
+    </div>
+    <div class="faq-item">
+      <h4>★ What if the weather's bad?</h4>
+      <p>Gulf Coast July: hot, humid, 30% chance of drama. We'll make the call by noon on the 5th. The shells keep — the shrimp doesn't.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Flag stripe -->
+<hr class="hr-burnout" />
+
+<!-- Build the Show: 4-round voting -->
+<section class="section vote-section" id="vote">
+  <div class="section-heading">Judge the Show</div>
+  <div class="section-sub">★ Four Rounds. One Champion. ★</div>
+
+  <p class="vote-intro">The crates get loaded and sequenced in daylight — the menu's locked long before dark. Your job comes after the smoke clears: crown the round that hit hardest. One vote per person. Choose wisely — no take-backsies on The Hill.</p>
+
+  <div class="ballot-card">
+    <div class="form-group">
+      <label for="voter-name">Your Name *</label>
+      <input type="text" id="voter-name" placeholder="So we know who to blame" />
+    </div>
+
+    <div class="vote-round">
+      <div class="vote-round-title">Which round took the night?</div>
+      <div class="round-options" id="round-options"></div>
+    </div>
+
+    <button type="button" class="submit-btn" id="vote-btn">🏆 &nbsp; Cast My Vote &nbsp; 🏆</button>
+    <div class="form-message" id="vote-message"></div>
+  </div>
+
+  <div class="tally-wrap" id="tally-wrap"></div>
+</section>
+
+<!-- Flag stripe -->
+<hr class="hr-flag" />
+
+<!-- Years of Boom -->
+<section class="section history-section">
+  <div class="section-heading">Years of Boom</div>
+  <div class="section-sub">★ The Permanent Record ★</div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">2021</div>
+      <div class="timeline-text">Three crates, one hundred tubes, a clipboard, and a dream. The quick-connects betrayed us. Double zip ties forever.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2022</div>
+      <div class="timeline-text">The year of the Whistlers. Dad discovered Big Reports and never looked back. A $198 cake discovered it was not worth $198.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2023</div>
+      <div class="timeline-text">The Peacock 180: a hundred and fifty dollars, gone in ninety seconds. Beautiful. Devastating. Festival balls continued to disappoint everyone.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2024</div>
+      <div class="timeline-text">John found a suspiciously good deal at a stand we don't name. Two crates fired at once — basically a homemade cake. The young'uns got glow sticks.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2025</div>
+      <div class="timeline-text">$735 of fireworks. $400 of shrimp. The Hotbox earned its keep. Color Wars did not. Whistle &amp; crackle forever.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2026</div>
+      <div class="timeline-text">Four rounds. Your votes. History pending.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Flag stripe -->
+<hr class="hr-burnout" />
+
+<!-- RSVP -->
+<section class="section rsvp-section" id="rsvp">
+  <div class="section-heading">RSVP</div>
+  <div class="section-sub">★ Don't Show Up With "No" in Your Heart ★</div>
+
+  <!-- America-O-Meter (global shell counter) -->
+  <div class="america-meter">
+    <div class="label">🎆 America-O-Meter 🎆</div>
+    <div class="count" id="america-count">—</div>
+    <div class="sub">Shells launched by patriots like you. Tap the night sky above to add to the count.</div>
+  </div>
+
+  <!-- Party Stats -->
+  <div class="stats-bar" id="stats-bar">
+    <div class="stat">
+      <div class="stat-num" id="stat-people">0</div>
+      <span>🎉 Coming</span>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="stat-maybe">0</div>
+      <span>🤞 Maybe</span>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <form id="rsvp-form" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Your Name *</label>
+          <input type="text" id="name" name="name" placeholder="Full name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email (optional)</label>
+          <input type="email" id="email" name="email" placeholder="For updates" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="guest_count">Total in Your Party</label>
+          <input type="number" id="guest_count" name="guest_count" value="1" min="1" max="20" />
+        </div>
+        <div class="form-group">
+          <label>Attendance</label>
+          <div class="radio-group" style="margin-top:0.45rem;">
+            <label class="radio-option">
+              <input type="radio" name="status" value="confirmed" checked />
+              I'll be there! 🎉
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="status" value="tentative" />
+              Maybe / TBD 🤞
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="bringing">What Are You Bringing?</label>
+        <input type="text" id="bringing" name="bringing" placeholder="e.g. potato salad, drinks, lawn chairs…" />
+      </div>
+
+      <div class="form-group">
+        <label for="fireworks_pref">Favorite Kind of Boom</label>
+        <select id="fireworks_pref" name="fireworks_pref">
+          <option value="">No preference — surprise me!</option>
+          <option value="crackling">Crackling &amp; whistling effects</option>
+          <option value="reports">Big booming reports</option>
+          <option value="chrysanthemum">Chrysanthemum bursts</option>
+          <option value="variety">All of the above</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Notes / Message</label>
+        <textarea id="notes" name="notes" placeholder="Allergies, questions, special requests…"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="budget_pledge">Powder Fund (Optional)</label>
+        <input type="number" id="budget_pledge" name="budget_pledge" value="0" min="0" step="5" placeholder="0" />
+        <span class="field-hint">The show happens regardless. But physics is physics — more powder, more boom. Zero pressure, maximum gratitude.</span>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">
+        ★ &nbsp; Count Me In &nbsp; ★
+      </button>
+      <div class="form-message" id="form-message"></div>
+    </form>
+  </div>
+
+  <!-- Bring-o-meter -->
+  <div class="guest-list-wrap" id="bring-wrap" style="display:none;">
+    <div class="guest-list-title">★ Already on the Truck ★</div>
+    <div class="guest-chips" id="bring-chips"></div>
+  </div>
+
+  <!-- Guest List -->
+  <div class="guest-list-wrap" id="guest-list-wrap" style="display:none;">
+    <div class="guest-list-title">★ Who's Coming ★</div>
+    <div class="guest-chips" id="guest-chips"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span class="footer-stars">★ ★ ★ ★ ★</span>
+  Boom on The Hill · 24631 Hwy 53, Saucier, MS · Keep on keepin' on 🇺🇸
+  <br /><span style="margin-top:0.4rem; display:block; opacity:0.5; font-size:0.7rem;">Questions? Reach out to Jeremy · jeremy.screws@gmail.com</span>
+</footer>
+
+<!-- SCRIPTS -->
+<script type="module">
+  // CONFIG
+  const SUPABASE_URL = 'https://naolvzlbiukpjlrvzrkd.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5hb2x2emxiaXVrcGpscnZ6cmtkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMTQwNDIsImV4cCI6MjA5NTg5MDA0Mn0.2ZdsPwzt-aTxVmK0BFb0P2-tChP7IHb3_ML9M0GDFPk';
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'apikey': SUPABASE_ANON_KEY,
+    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+    'Prefer': 'return=minimal'
+  };
+  const readHeaders = { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` };
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // COUNTDOWN + FUSE
+  const partyDate = new Date('2026-07-05T18:00:00-05:00'); // 6 PM CDT
+  const fuseLit   = new Date('2026-06-01T00:00:00-05:00'); // fuse starts burning June 1
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = partyDate - now;
+
+    // fuse progress
+    const progress = Math.min(1, Math.max(0, (now - fuseLit) / (partyDate - fuseLit)));
+    document.getElementById('fuse-burned').style.width = (progress * 100) + '%';
+    document.getElementById('fuse-spark').style.left   = (progress * 100) + '%';
+
+    if (diff <= 0) {
+      document.querySelector('.countdown-label').textContent = '🎆 IT\'S PARTY TIME! 🎆';
+      document.getElementById('countdown').innerHTML = '<div style="font-family: \'Special Elite\', cursive; font-size:1.5rem; letter-spacing:0.1em;">THE HILL IS LIVE!</div>';
+      return;
+    }
+
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000)  / 60000);
+    const secs  = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('cd-days').textContent  = String(days).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // CANVAS FIREWORKS
+  const band   = document.getElementById('sky-band');
+  const canvas = document.getElementById('sky-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W = 0, H = 0;
+
+  function resizeCanvas() {
+    W = canvas.width  = band.clientWidth;
+    H = canvas.height = band.clientHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  const COLORS = ['#F2C76B', '#FF6B6B', '#8FB2FF', '#FFFFFF', '#FFD27D', '#FF9D5C'];
+  const shells = [];
+  const sparks = [];
+
+  function launchShell(x) {
+    if (shells.length > 6) return;
+    shells.push({
+      x: x !== undefined ? x : 40 + Math.random() * (W - 80),
+      y: H,
+      vy: -(H * 0.012 + Math.random() * H * 0.005),
+      wiggle: Math.random() < 0.25, // whistler corkscrew
+      color: COLORS[Math.floor(Math.random() * COLORS.length)]
+    });
+  }
+
+  function explode(x, y, color) {
+    const count = 60 + Math.floor(Math.random() * 40);
+    const isChrys = Math.random() < 0.6; // chrysanthemum bias
+    for (let i = 0; i < count; i++) {
+      const angle = (Math.PI * 2 * i) / count + Math.random() * 0.12;
+      const speed = isChrys ? (2.4 + Math.random() * 0.7) : (1 + Math.random() * 3);
+      sparks.push({
+        x, y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        decay: 0.006 + Math.random() * 0.01,
+        color,
+        crackle: Math.random() < 0.35
+      });
+    }
+  }
+
+  function tick() {
+    ctx.fillStyle = 'rgba(16,20,48,0.22)';
+    ctx.fillRect(0, 0, W, H);
+
+    for (let i = shells.length - 1; i >= 0; i--) {
+      const s = shells[i];
+      s.y += s.vy;
+      if (s.wiggle) s.x += Math.sin(s.y * 0.06) * 1.6;
+      s.vy += 0.09;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFE9B8';
+      ctx.fill();
+      if (s.vy >= -0.6) {
+        explode(s.x, s.y, s.color);
+        shells.splice(i, 1);
+      }
+    }
+
+    for (let i = sparks.length - 1; i >= 0; i--) {
+      const p = sparks[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vx *= 0.985;
+      p.vy = p.vy * 0.985 + 0.026;
+      p.life -= p.decay;
+      if (p.life <= 0) { sparks.splice(i, 1); continue; }
+      if (p.crackle && Math.random() < 0.35) continue; // flicker
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.7, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  // tap the sky to launch
+  band.addEventListener('pointerdown', (e) => {
+    const rect = band.getBoundingClientRect();
+    launchShell(e.clientX - rect.left);
+    bumpAmerica();
+  });
+
+  // ambient auto-launch
+  if (!reducedMotion) {
+    setTimeout(() => launchShell(), 900);
+    setInterval(() => {
+      if (document.visibilityState === 'visible') launchShell();
+    }, 4200);
+  }
+
+  // JUDGE THE SHOW: BEST-ROUND VOTING
+  const ROUNDS = [
+    { value: 1, label: 'Round 1', name: 'The Opener' },
+    { value: 2, label: 'Round 2', name: 'The Build' },
+    { value: 3, label: 'Round 3', name: 'The Heavy Hitters' },
+    { value: 4, label: 'Round 4', name: 'The Finale' }
+  ];
+
+  // build round options
+  const roundOptions = document.getElementById('round-options');
+  ROUNDS.forEach(r => {
+    const lab = document.createElement('label');
+    lab.className = 'round-chip';
+    lab.innerHTML = `<input type="radio" name="bestround" value="${r.value}" /><span><b>${r.label}</b>${r.name}</span>`;
+    roundOptions.appendChild(lab);
+  });
+
+  const voteBtn = document.getElementById('vote-btn');
+  const voteMsg = document.getElementById('vote-message');
+
+  async function loadVotes() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/july4_votes?select=round`, { headers: readHeaders });
+      if (!res.ok) return;
+      const data = await res.json();
+
+      const counts = { 1: 0, 2: 0, 3: 0, 4: 0 };
+      data.forEach(v => { counts[v.round] = (counts[v.round] || 0) + 1; });
+      const total = data.length;
+      const max = Math.max(...Object.values(counts));
+
+      const wrap = document.getElementById('tally-wrap');
+      wrap.innerHTML = '';
+
+      const div = document.createElement('div');
+      div.className = 'tally-round';
+
+      let inner = `<h4>★ The Standings ★</h4>`;
+      if (!total) {
+        inner += `<div class="tally-empty">No votes yet — the title is unclaimed.</div>`;
+      } else {
+        ROUNDS.forEach(r => {
+          const n = counts[r.value] || 0;
+          const pct = Math.round((n / total) * 100);
+          const leader = (n === max && n > 0) ? ' leader' : '';
+          const crown  = (n === max && n > 0) ? ' 🏆' : '';
+          inner += `
+            <div class="tally-bar-row">
+              <div class="tally-bar-label">${r.label} · ${r.name}${crown}</div>
+              <div class="tally-bar-track"><div class="tally-bar-fill${leader}" style="width:${Math.max(pct, 3)}%"></div></div>
+              <div class="tally-bar-count">${n}</div>
+            </div>`;
+        });
+      }
+      div.innerHTML = inner;
+      wrap.appendChild(div);
+    } catch (e) { /* silent */ }
+  }
+
+  loadVotes();
+
+  voteBtn.addEventListener('click', async () => {
+    voteMsg.textContent = '';
+    voteMsg.className = 'form-message';
+
+    const voter = document.getElementById('voter-name').value.trim();
+    if (!voter) {
+      voteMsg.textContent = 'Put your name on the ballot first.';
+      voteMsg.className = 'form-message error';
+      return;
+    }
+
+    const sel = document.querySelector('input[name=bestround]:checked');
+    if (!sel) {
+      voteMsg.textContent = 'Pick a round, partner.';
+      voteMsg.className = 'form-message error';
+      return;
+    }
+    const pick = { voter_name: voter, round: parseInt(sel.value) };
+
+    voteBtn.disabled = true;
+    voteBtn.textContent = '... Counting ...';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/july4_votes`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(pick)
+      });
+
+      if (res.ok || res.status === 201) {
+        voteMsg.textContent = '🏆 Vote counted! May the best round win. 🇺🇸';
+        voteMsg.className = 'form-message success';
+        loadVotes();
+      } else if (res.status === 409) {
+        voteMsg.textContent = 'You already cast your vote. No take-backsies on The Hill.';
+        voteMsg.className = 'form-message error';
+      } else {
+        throw new Error('Vote failed');
+      }
+    } catch (err) {
+      voteMsg.textContent = 'Something misfired. Try again or holler at Jeremy.';
+      voteMsg.className = 'form-message error';
+    } finally {
+      voteBtn.disabled = false;
+      voteBtn.innerHTML = '🏆 &nbsp; Cast My Vote &nbsp; 🏆';
+    }
+  });
+
+  // LOAD GUEST LIST + STATS + BRING-O-METER
+  async function loadGuests() {
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/july4_rsvps?select=name,status,guest_count,bringing&order=created_at.asc`,
+        { headers: readHeaders }
+      );
+      if (!res.ok) return;
+      const data = await res.json();
+      if (!data.length) return;
+
+      // Stats
+      let peopleComing = 0;
+      let maybeParties = 0;
+
+      data.forEach(r => {
+        if (r.status === 'tentative') {
+          maybeParties++;
+        } else {
+          peopleComing += (r.guest_count || 1);
+        }
+      });
+
+      document.getElementById('stat-people').textContent = peopleComing;
+      document.getElementById('stat-maybe').textContent  = maybeParties;
+      document.getElementById('stats-bar').style.display = 'flex';
+
+      // Guest chips
+      const wrap = document.getElementById('guest-list-wrap');
+      const chips = document.getElementById('guest-chips');
+      chips.innerHTML = '';
+
+      data.forEach(r => {
+        const chip = document.createElement('span');
+        chip.className = 'chip' + (r.status === 'tentative' ? ' tentative' : '');
+        const guestStr = r.guest_count > 1 ? ` +${r.guest_count - 1}` : '';
+        chip.textContent = r.name + guestStr;
+        chips.appendChild(chip);
+      });
+
+      wrap.style.display = 'block';
+
+      // Bring-o-meter
+      const bringing = data.filter(r => r.bringing);
+      if (bringing.length) {
+        const bWrap  = document.getElementById('bring-wrap');
+        const bChips = document.getElementById('bring-chips');
+        bChips.innerHTML = '';
+        bringing.forEach(r => {
+          const chip = document.createElement('span');
+          chip.className = 'chip bring';
+          chip.textContent = `${r.bringing} — ${r.name}`;
+          bChips.appendChild(chip);
+        });
+        bWrap.style.display = 'block';
+      }
+    } catch (e) { /* silent fail */ }
+  }
+
+  loadGuests();
+
+  // MULLET MODE TOGGLE
+  const mulletBtn   = document.getElementById('mullet-toggle');
+  const mulletKnob  = document.getElementById('mullet-knob');
+  const mulletLabel = document.getElementById('mullet-label');
+  let isMullet = localStorage.getItem('mullet') === '1';
+  function applyMullet() {
+    document.body.classList.toggle('mullet', isMullet);
+    mulletKnob.textContent  = isMullet ? '🤘' : '💼';
+    mulletLabel.textContent = isMullet ? 'Party in the Back' : 'Business in the Front';
+  }
+  applyMullet();
+  mulletBtn.addEventListener('click', () => {
+    isMullet = !isMullet;
+    try { localStorage.setItem('mullet', isMullet ? '1' : '0'); } catch(e) {}
+    applyMullet();
+    // celebratory volley when flipped on
+    if (isMullet && !reducedMotion) {
+      launchShell();
+      setTimeout(() => launchShell(), 250);
+      setTimeout(() => launchShell(), 500);
+    }
+  });
+
+  // SPARKY THE MASCOT - rotating catchphrases
+  const SPARKY_LINES = [
+    "Keep on keepin' on.",
+    "Life's a garden. Dig it.",
+    "You best be RSVP'in.",
+    "More powder. More boom.",
+    "Mullets receive priority parking.",
+    "Don't show up with 'no' in your heart.",
+    "Shrimp incoming. Brace yourself."
+  ];
+  const sparky = document.getElementById('sparky');
+  const bubble = document.getElementById('sparky-bubble');
+  let bubbleTimer = null;
+  function sparkySay() {
+    const line = SPARKY_LINES[Math.floor(Math.random() * SPARKY_LINES.length)];
+    bubble.textContent = line;
+    bubble.classList.add('show');
+    clearTimeout(bubbleTimer);
+    bubbleTimer = setTimeout(() => bubble.classList.remove('show'), 3800);
+  }
+  sparky.addEventListener('click', sparkySay);
+  sparky.addEventListener('mouseenter', sparkySay);
+  // greet the visitor after a beat
+  setTimeout(sparkySay, 2200);
+
+  // EAGLE FLYBY - ambient every ~60 seconds
+  const eagle = document.getElementById('eagle');
+  function eagleFly() {
+    if (document.visibilityState !== 'visible' || reducedMotion) return;
+    eagle.classList.remove('flying');
+    void eagle.offsetWidth; // reflow
+    eagle.classList.add('flying');
+  }
+  setTimeout(eagleFly, 4000);
+  setInterval(eagleFly, 62000);
+
+  // AMERICA-O-METER - global shell counter
+  const meterEl = document.getElementById('america-count');
+  let americaCount = 0;
+  let pendingLaunches = 0;
+  let pushTimer = null;
+
+  async function loadAmericaCount() {
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/america_o_meter?select=id`, {
+        headers: { ...readHeaders, 'Prefer': 'count=exact', 'Range': '0-0' }
+      });
+      const range = res.headers.get('content-range');
+      if (range) {
+        const total = parseInt(range.split('/')[1], 10);
+        if (!isNaN(total)) {
+          americaCount = total;
+          meterEl.textContent = americaCount.toLocaleString();
+          return;
+        }
+      }
+    } catch (e) {}
+    meterEl.textContent = '0';
+  }
+
+  function bumpAmerica() {
+    americaCount++;
+    pendingLaunches++;
+    meterEl.textContent = americaCount.toLocaleString();
+    // debounce-batch writes
+    clearTimeout(pushTimer);
+    pushTimer = setTimeout(flushPending, 1500);
+  }
+  async function flushPending() {
+    if (pendingLaunches < 1) return;
+    const rows = Array.from({ length: pendingLaunches }, () => ({}));
+    pendingLaunches = 0;
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/america_o_meter`, {
+        method: 'POST', headers, body: JSON.stringify(rows)
+      });
+    } catch (e) {}
+  }
+  loadAmericaCount();
+  window.addEventListener('beforeunload', flushPending);
+
+  // STAR FIELD
+  const starField = document.getElementById('sky-stars');
+  for (let i = 0; i < 26; i++) {
+    const st = document.createElement('div');
+    st.className = 'star';
+    st.style.left = (Math.random() * 100).toFixed(1) + '%';
+    st.style.top  = (Math.random() * 55).toFixed(1) + '%';
+    st.style.animationDelay = (Math.random() * 2.6).toFixed(2) + 's';
+    if (Math.random() < 0.3) { st.style.width = '3px'; st.style.height = '3px'; }
+    starField.appendChild(st);
+  }
+
+  // SCROLL REVEALS
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.detail-card, .bring-card, .faq-item, .timeline-item, .ballot-card, .form-card')
+    .forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = (i % 4) * 70 + 'ms';
+      io.observe(el);
+    });
+
+  // RSVP FORM
+  const form    = document.getElementById('rsvp-form');
+  const btn     = document.getElementById('submit-btn');
+  const message = document.getElementById('form-message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    message.textContent = '';
+    message.className = 'form-message';
+
+    const name = document.getElementById('name').value.trim();
+    if (!name) {
+      message.textContent = 'Please enter your name.';
+      message.className = 'form-message error';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '... Sending ...';
+
+    const payload = {
+      name,
+      email:          document.getElementById('email').value.trim() || null,
+      status:         form.querySelector('input[name=status]:checked').value,
+      guest_count:    parseInt(document.getElementById('guest_count').value) || 1,
+      bringing:       document.getElementById('bringing').value.trim() || null,
+      fireworks_pref: document.getElementById('fireworks_pref').value || null,
+      budget_pledge:  parseInt(document.getElementById('budget_pledge').value) || 0,
+      notes:          document.getElementById('notes').value.trim() || null,
+    };
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/july4_rsvps`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload)
+      });
+
+      if (res.ok || res.status === 201) {
+        message.textContent = '🎆 That\'s the spirit! See you on The Hill! 🎆';
+        message.className = 'form-message success';
+        form.reset();
+        document.getElementById('guest_count').value = 1;
+        loadGuests();
+        // celebratory volley
+        if (!reducedMotion) {
+          launchShell();
+          setTimeout(() => launchShell(), 350);
+          setTimeout(() => launchShell(), 700);
+        }
+      } else if (res.status === 409) {
+        message.textContent = 'Looks like you\'ve already RSVP\'d! Text Jeremy if anything changes.';
+        message.className = 'form-message error';
+      } else {
+        const err = await res.json();
+        throw new Error(err.message || 'Submission failed');
+      }
+    } catch (err) {
+      message.textContent = 'Something misfired. Try again or text Jeremy directly.';
+      message.className = 'form-message error';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '★   Count Me In   ★';
+    }
+  });
+</script>
+</body>
+</html>
